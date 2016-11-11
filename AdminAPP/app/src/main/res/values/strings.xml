@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">AdminAPP</string>
+    <string name="app_name">Admin APP</string>
+    <string name="password">Contraseña</string>
+    <string name="userName">Nombre de Usuario</string>
+    <string name="btnLogin">Iniciar Sesión</string>
+    <string name="products">Productos</string>
+    <string name="users">Usuarios</string>
+    <string name="addProducts">Agregar Productos</string>
 </resources>
