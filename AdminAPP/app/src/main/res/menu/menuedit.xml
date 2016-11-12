@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item
-        android:id="@+id/addProducts"
+        android:id="@+id/saveProduct"
         android:icon="@drawable/ic_signs"
-        android:title="@string/addProducts"
+        android:title="@string/save"
         app:showAsAction="always"
         android:orderInCategory="0"/>
-    <item android:id="@+id/lookUsers"
-        android:icon="@drawable/ic_usuarios"
-        android:title="@string/users"
+    <item
+        android:id="@+id/cancel"
+        android:icon="@drawable/ic_cancelar"
+        android:title="@string/cancel"
         app:showAsAction="always"
         android:orderInCategory="0"/>
+                                                        <!--- cambiar icono -->
 </menu>

@@ -5,5 +5,14 @@
     <string name="btnLogin">Iniciar Sesión</string>
     <string name="products">Productos</string>
     <string name="users">Usuarios</string>
-    <string name="addProducts">Agregar Productos</string>
+    <string name="addProducts">Agregar Producto</string>
+    <string name="description">Descripción</string>
+    <string name="price">Precio</string>
+    <string name="productName">Nombre del Producto</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="exitSaving">Agregado Con Exito</string>
+    <string name="editProduct">Editar Producto</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Eliminar</string>
 </resources>

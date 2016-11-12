@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">Admin APP</string>
-    <string name="password">Password</string>
-    <string name="userName">User Name</string>
-    <string name="btnLogin">Login</string>
-    <string name="products">Products</string>
-    <string name="users">Users</string>
-    <string name="addProducts">Add Products</string>
-</resources>
