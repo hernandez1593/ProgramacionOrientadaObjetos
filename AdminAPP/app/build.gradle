@@ -26,6 +26,11 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.0.0'
     testCompile 'junit:junit:4.12'
+<<<<<<< HEAD
     compile files('libs/retrofit-1.9.0.jar')
     compile files('libs/gson-2.3.1.jar')
+=======
+    compile files('libs/gson-2.3.1.jar')
+    compile files('libs/retrofit-1.9.0.jar')
+>>>>>>> ea1ba12bba6320ec56d0bd02ae51d786574bd74c
 }
