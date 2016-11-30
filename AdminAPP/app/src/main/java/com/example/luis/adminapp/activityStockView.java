@@ -1,37 +1,66 @@
 package com.example.luis.adminapp;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class activityStockView extends AppCompatActivity {
 
-    ListView lvProducts;
+    ListView lvProducts; //listview para productos
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_view);
-        lvProducts = (ListView) findViewById(R.id.lvProducts);
+        lvProducts = (ListView) findViewById(R.id.lvProducts); //inicializa el listview
 
-        //Datos de pruebas
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("http://farmaciaapi.herokuapp.com/api").build(); //Adapter de retrofit
+
+        ProductosService service = restAdapter.create(ProductosService.class); // Interface de la clase productos
+
+        service.getProductos(new Callback<List<Productos>>() {
+            @Override
+            public void success(List<Productos> productoss, Response response) {
+
+                AdaptadorProductos adaptador = new AdaptadorProductos(activityStockView.this, productoss);
+                lvProducts.setAdapter(adaptador);
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+                Toast.makeText(activityStockView.this, "Error: "+retrofitError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        /*/Datos de pruebas
         String []arregloPaises = {"Acetaminofen","Panadol","Extasis","Mota Medicinal"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,arregloPaises);
-        lvProducts.setAdapter(adapter);
+        lvProducts.setAdapter(adapter); */
 
         lvProducts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -116,5 +145,26 @@ public class activityStockView extends AppCompatActivity {
                 return true;
         }
         return true;
+    }
+
+    private class AdaptadorProductos extends ArrayAdapter<Productos>{
+        private List<Productos> listaProductos;
+
+        public AdaptadorProductos(Context context, List<Productos> productos){
+            super(context, R.layout.productos_item, productos);
+            listaProductos = productos;
+        }
+
+        public View getView(int position, View containerView, ViewGroup parent){
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+
+            View item = inflater.inflate(R.layout.productos_item, null);
+
+            TextView nombreProducto = (TextView)item.findViewById(R.id.nombreProducto);
+            nombreProducto.setText(listaProductos.get(position).getNombre());
+
+            return item;
+        }
+
     }
 }
