@@ -15,4 +15,6 @@
     <string name="editProduct">Editar Producto</string>
     <string name="edit">Editar</string>
     <string name="delete">Eliminar</string>
+    <string name="call">Llamar</string>
+    <string name="addUser">Agregar Usuario</string>
 </resources>

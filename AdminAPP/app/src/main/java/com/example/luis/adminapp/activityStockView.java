@@ -43,7 +43,7 @@ public class activityStockView extends AppCompatActivity {
 
         ProductosService service = restAdapter.create(ProductosService.class); // Interface de la clase productos
 
-        service.getProductos(new Callback<List<Productos>>() {
+        service.getProductos(new Callback<List<Productos>>() { //Get del api
             @Override
             public void success(List<Productos> productoss, Response response) {
 
@@ -56,11 +56,6 @@ public class activityStockView extends AppCompatActivity {
                 Toast.makeText(activityStockView.this, "Error: "+retrofitError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-        /*/Datos de pruebas
-        String []arregloPaises = {"Acetaminofen","Panadol","Extasis","Mota Medicinal"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,arregloPaises);
-        lvProducts.setAdapter(adapter); */
 
         lvProducts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -131,21 +126,15 @@ public class activityStockView extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
+        if(id == R.id.lookUsers) {
+            Intent intent = new Intent(getApplicationContext(), Contacts.class);
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.item_edit:
-                Toast.makeText(this, "Comedy Clicked", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.item_delete:
-                Toast.makeText(this, "Movies Clicked", Toast.LENGTH_SHORT).show();
-                return true;
-        }
-        return true;
-    }
 
     private class AdaptadorProductos extends ArrayAdapter<Productos>{
         private List<Productos> listaProductos;
